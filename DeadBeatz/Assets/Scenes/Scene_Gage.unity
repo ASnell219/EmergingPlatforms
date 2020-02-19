@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _manager: {fileID: 333863387}
-  q: Muse
+  query: Muse
   type:
   - track
 --- !u!1 &333863386
@@ -370,10 +370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82fe01d690dba6f43a207bbdbdacf37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accessTokenObject:
-    access_token: 
-    token_bearer: 
-    expires_in: 0
 --- !u!4 &333863388
 Transform:
   m_ObjectHideFlags: 0
