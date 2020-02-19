@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 4849ab75a91162045a686afbcd29abcf
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Horrorshow
+  fontNames:
+  - Horrorshow
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 45fd2394fb6f6564487afbfa3b1f1bbb, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
