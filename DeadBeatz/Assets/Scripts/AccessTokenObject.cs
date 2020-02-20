@@ -6,22 +6,7 @@ using UnityEngine;
 public class AccessTokenObject
 {
     public string access_token;
-    public string token_bearer;
+    public string token_type;
     public int expires_in;
-
-    public string AccessToken 
-    { 
-        get { return access_token; }
-    }
-
-    public string TokenBearer 
-    { 
-        get { return token_bearer; }
-    }
-
-    public int Expiration 
-    { 
-        get { return expires_in; }
-    }
 
 }

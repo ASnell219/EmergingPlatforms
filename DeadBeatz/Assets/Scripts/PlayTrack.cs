@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class PlayTrack : MonoBehaviour
 {
-    [SerializeField] Spotify _manager;
+    [SerializeField] Spotify _manager = null;
 
     public string query;
     public string[] type;
@@ -18,11 +18,14 @@ public class PlayTrack : MonoBehaviour
     IEnumerator PlayTrackTest()
     {
         string url = "https://api.spotify.com/v1/search?q=";
+        //string url = "https://api.spotify.com/v1/tracks/11dFghVXANMlKmJXsNCbNl";
+
         url += query + "&";
+
         url += "type=";
-        for(int i = 0; i < type.Length; i++)
+        for (int i = 0; i < type.Length; i++)
         {
-            if(i == (type.Length - 1))
+            if (i == (type.Length - 1))
             {
                 url += type[i];
             }
@@ -31,23 +34,22 @@ public class PlayTrack : MonoBehaviour
                 url = url + type[i] + "%2C";
             }
         }
-        
+
         using (UnityWebRequest uwr = UnityWebRequest.Get(url))
         {
             uwr.SetRequestHeader("Method", "GET");
             uwr.SetRequestHeader("Accept", "application/json");
             uwr.SetRequestHeader("Content-Type", "application/json");
-
-            uwr.SetRequestHeader("Authorization", _manager.TokenObject.TokenBearer + " " + _manager.TokenObject.AccessToken); //WHY NULL
+            uwr.SetRequestHeader("Authorization", (_manager.TokenObject.token_type + " " + _manager.TokenObject.access_token));
 
             yield return uwr.SendWebRequest();
             if (uwr.isNetworkError || uwr.isHttpError)
             {
-                print(uwr.error);
+                Debug.Log(uwr.error);
             }
             else
             {
-                Debug.Log("track");
+                Debug.Log(uwr.downloadHandler.text);
             }
         }
     }

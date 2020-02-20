@@ -9,7 +9,7 @@ public class Spotify : MonoBehaviour
 {
     private string ClientID = "cdab467846d14387a71ae93dde547fda";
     private string ClientSecret = "7600b7b0140c4168a8ac192a5085b9da";
-    private static AccessTokenObject accessTokenObject;
+    private AccessTokenObject accessTokenObject;
 
     public AccessTokenObject TokenObject { get { return accessTokenObject; } set { accessTokenObject = value; } }
 
@@ -39,9 +39,8 @@ public class Spotify : MonoBehaviour
             }
             else
             {
-                AccessTokenObject tokenObject = JsonUtility.FromJson<AccessTokenObject>(uwr.downloadHandler.text);
-                Debug.Log(tokenObject.AccessToken);
-                TokenObject = tokenObject;
+                TokenObject = JsonUtility.FromJson<AccessTokenObject>(uwr.downloadHandler.text);
+                Debug.Log(uwr.downloadHandler.text);
             }
         }
     }
