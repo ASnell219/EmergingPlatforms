@@ -21,19 +21,35 @@ public class TouchInput : MonoBehaviour
     {
         if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Tap");
+            //Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            Ray raycast = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit raycastHit;
+
+            if (Physics.Raycast(raycast, out raycastHit))
+            {
+                Debug.Log("Something Hit");
+                if (raycastHit.collider.name == "Cube")
+                {
+                    Debug.Log("Tap");
+                    
+                }
+            }
+            
             theTouch = Input.GetTouch(0);
             phaseDisplayText.text = theTouch.phase.ToString();
+            Debug.Log(theTouch);
 
             if (theTouch.phase == TouchPhase.Ended)
             {
                 timeTouchEnded = Time.time;
             }
-
+            
         }
+        
         else if (Time.time - timeTouchEnded > displayTime)
         {
             phaseDisplayText.text = "";
         }
+        
     }
 }
