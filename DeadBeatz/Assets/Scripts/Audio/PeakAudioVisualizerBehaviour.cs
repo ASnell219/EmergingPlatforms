@@ -19,6 +19,8 @@ public class PeakAudioVisualizerBehaviour : IAudioVisualizationBehaviour
         if (_animator == null) _animator = target.GetComponent<Animator>();
         if (point.IsPeak)
         {
+            //target.SetActive(!target.activeSelf);
+            //Spawn Object instead
             _animator.SetTrigger("Flash");
         }
     }

@@ -22,7 +22,7 @@ public class AudioVisualizer : MonoBehaviour
     private readonly IAudioVisualizationBehaviour _highRangeVisualizationBehaviour = new PeakAudioVisualizerBehaviour();
 
     [SerializeField]
-    private GameObject _bassObj, _midRangeObj, _highRangeObj;
+    private GameObject _bassObj, _midRangeObj, _highRangeObj, _cube;
 
     private SpectralFluxAnalyzer _bassAnalyzer, _midRangeAnalyzer, _highRangeAnalyzer;
 
@@ -30,6 +30,8 @@ public class AudioVisualizer : MonoBehaviour
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        
+
         _audioProcessor = new AudioProcessor(1024);
 
         // Bass
@@ -63,6 +65,7 @@ public class AudioVisualizer : MonoBehaviour
 
         var currentPoint = _audioProcessor.GetCurrentPlayingPointIndex(_audioSource);
         _bassVisualizationBehaviour.VisualizePoint(_bassAnalyzer.SpectralFluxSamples[currentPoint], _bassObj);
+        _bassVisualizationBehaviour.VisualizePoint(_bassAnalyzer.SpectralFluxSamples[currentPoint], _cube);
         _midRangeVisualizationBehaviour.VisualizePoint(_midRangeAnalyzer.SpectralFluxSamples[currentPoint], _midRangeObj);
         _highRangeVisualizationBehaviour.VisualizePoint(_highRangeAnalyzer.SpectralFluxSamples[currentPoint], _highRangeObj);
     }
