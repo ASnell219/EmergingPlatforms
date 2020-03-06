@@ -5,6 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioVisualizer : MonoBehaviour
@@ -12,6 +13,7 @@ public class AudioVisualizer : MonoBehaviour
     private AudioProcessor _audioProcessor;
 
     private AudioSource _audioSource;
+    public AudioSource _playedSource;
 
     private bool _playClip;
 
@@ -61,12 +63,22 @@ public class AudioVisualizer : MonoBehaviour
         if (!_audioSource.isPlaying)
         {
             _audioSource.Play();
+            StartCoroutine(WaitTest());
         }
-
-        var currentPoint = _audioProcessor.GetCurrentPlayingPointIndex(_audioSource);
+        
+        var currentPoint = _audioProcessor.GetCurrentPlayingPointIndex(_audioSource); //can go ahead of song (maybe)
+        //delay song by at least length of lane and spawn on beat detection. Player should only hear second song and beats should line up.
         _bassVisualizationBehaviour.VisualizePoint(_bassAnalyzer.SpectralFluxSamples[currentPoint], _bassObj);
-        _bassVisualizationBehaviour.VisualizePoint(_bassAnalyzer.SpectralFluxSamples[currentPoint], _cube);
         _midRangeVisualizationBehaviour.VisualizePoint(_midRangeAnalyzer.SpectralFluxSamples[currentPoint], _midRangeObj);
         _highRangeVisualizationBehaviour.VisualizePoint(_highRangeAnalyzer.SpectralFluxSamples[currentPoint], _highRangeObj);
+    }
+
+    IEnumerator WaitTest()
+    {
+        if (!_playedSource.isPlaying)
+        {
+            yield return new WaitForSeconds(5); //time a note takes to reach the player
+            _playedSource.Play();
+        }
     }
 }
