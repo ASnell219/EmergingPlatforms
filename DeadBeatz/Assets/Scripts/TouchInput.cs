@@ -27,15 +27,34 @@ public class TouchInput : MonoBehaviour
 
             if (Physics.Raycast(raycast, out raycastHit))
             {
-                Debug.Log("Something Hit");
-                if (raycastHit.collider.name == "Cube")
+
+                if (raycastHit.collider.name == "Button")
                 {
-                    Debug.Log("Tap");
                     
+                        Debug.Log("Tap 1");
+                                      
+                }
+
+                if (raycastHit.collider.name == "Button2")
+                {
+                    Debug.Log("Tap 2");
+
+                }
+
+                if (raycastHit.collider.name == "Button3")
+                {
+                    Debug.Log("Tap 3");
+
+                }
+
+                if (raycastHit.collider.name == "Button4")
+                {
+                    Debug.Log("Tap 4");
+
                 }
             }
-            
-            theTouch = Input.GetTouch(0);
+            /*
+            theTouch = Input.GetTouch(0);//error here
             phaseDisplayText.text = theTouch.phase.ToString();
             Debug.Log(theTouch);
 
@@ -43,13 +62,14 @@ public class TouchInput : MonoBehaviour
             {
                 timeTouchEnded = Time.time;
             }
+            */
             
         }
-        
+        /*
         else if (Time.time - timeTouchEnded > displayTime)
         {
             phaseDisplayText.text = "";
         }
-        
+        */
     }
 }
