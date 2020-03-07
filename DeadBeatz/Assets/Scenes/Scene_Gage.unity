@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 302699100}
   - component: {fileID: 302699099}
   m_Layer: 0
-  m_Name: ObjectPooler(cube)
+  m_Name: ObjectPooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,12 +232,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: Cube
-    prefab: {fileID: 5632311628019567825, guid: 1bd1d2ce02de99a48bb7f4bfe2234be8,
+  - tag: Zombie
+    prefab: {fileID: 7081857311829499274, guid: 7446018486e6e2a43b99e417b84fcd94,
       type: 3}
-    size: 100
-  - tag: Sphere
-    prefab: {fileID: 8890243703407753235, guid: 823bd9c935154de4d8f128fdf1fa6987,
+    size: 50
+  - tag: Skeleton
+    prefab: {fileID: 4335769956773471490, guid: 1a6f50b47799e7f4da3a5c951fd791ae,
+      type: 3}
+    size: 50
+  - tag: Ghoost
+    prefab: {fileID: 7950999267987361243, guid: 852752981af9d9d489a235280d5f4551,
       type: 3}
     size: 100
 --- !u!4 &302699100
@@ -465,7 +469,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5eedcb408539a95439713b199b7ee773, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7134673b375fcc24ba8d1fc9cbd7ed3f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -696,7 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c090a89a4962c904282eb4618546b44b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playedSource: {fileID: 1013407612}
+  _playedSource: {fileID: 0}
   _bassObj: {fileID: 1643712114}
   _midRangeObj: {fileID: 1527339285}
   _highRangeObj: {fileID: 1016417975}
@@ -709,9 +713,9 @@ AudioSource:
   m_GameObject: {fileID: 1349069558}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -5824112350157543791, guid: 62a9c06e1dd8ed14d92c4d171b597646,
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 9508eed44b263e74f96eeaba91cee4a9,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5eedcb408539a95439713b199b7ee773, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e43bc92c725622e43bcb2f0e01616a0d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -72,22 +72,25 @@ public class AudioVisualizer : MonoBehaviour
         //delay song by at least length of lane and spawn on beat detection. Player should only hear second song and beats should line up.
         
         _bassVisualizationBehaviour.VisualizePoint(_bassAnalyzer.SpectralFluxSamples[currentPoint], _bassObj);
-        _bassVisualizationBehaviour.SpawnMonster(_bassAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Cube");
+        _bassVisualizationBehaviour.SpawnMonster(_bassAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Zombie");
 
         _midRangeVisualizationBehaviour.VisualizePoint(_midRangeAnalyzer.SpectralFluxSamples[currentPoint], _midRangeObj);
-        _midRangeVisualizationBehaviour.SpawnMonster(_midRangeAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Sphere");
+        _midRangeVisualizationBehaviour.SpawnMonster(_midRangeAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Skeleton");
 
         _highRangeVisualizationBehaviour.VisualizePoint(_highRangeAnalyzer.SpectralFluxSamples[currentPoint], _highRangeObj);
-
+        _highRangeVisualizationBehaviour.SpawnMonster(_highRangeAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Ghoost");
 
     }
 
     IEnumerator WaitTest()
     {
-        if (!_playedSource.isPlaying)
+        if(_playedSource != null)
         {
-            yield return new WaitForSeconds(5); //time a note takes to reach the player
-            _playedSource.Play();
+            if (!_playedSource.isPlaying)
+            {
+                yield return new WaitForSeconds(5); //time a note takes to reach the player
+                _playedSource.Play();
+            }
         }
     }
 }
