@@ -13,4 +13,6 @@ public interface IAudioVisualizationBehaviour
     void VisualizePoint([NotNull] SpectralFluxInfo point);
 
     void VisualizePoint([NotNull] SpectralFluxInfo point, GameObject target);
+
+    void SpawnMonster([NotNull] SpectralFluxInfo point, ObjectPooler objectPooler, string tag); 
 }

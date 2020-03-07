@@ -24,15 +24,17 @@ public class AudioVisualizer : MonoBehaviour
     private readonly IAudioVisualizationBehaviour _highRangeVisualizationBehaviour = new PeakAudioVisualizerBehaviour();
 
     [SerializeField]
-    private GameObject _bassObj, _midRangeObj, _highRangeObj, _cube;
+    private GameObject _bassObj, _midRangeObj, _highRangeObj;
 
     private SpectralFluxAnalyzer _bassAnalyzer, _midRangeAnalyzer, _highRangeAnalyzer;
 
+    ObjectPooler objectPooler;
     // Use this for initialization
     private void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+        objectPooler = ObjectPooler.Instance;
         
+        _audioSource = GetComponent<AudioSource>();
 
         _audioProcessor = new AudioProcessor(1024);
 
@@ -68,9 +70,16 @@ public class AudioVisualizer : MonoBehaviour
         
         var currentPoint = _audioProcessor.GetCurrentPlayingPointIndex(_audioSource); //can go ahead of song (maybe)
         //delay song by at least length of lane and spawn on beat detection. Player should only hear second song and beats should line up.
+        
         _bassVisualizationBehaviour.VisualizePoint(_bassAnalyzer.SpectralFluxSamples[currentPoint], _bassObj);
+        _bassVisualizationBehaviour.SpawnMonster(_bassAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Cube");
+
         _midRangeVisualizationBehaviour.VisualizePoint(_midRangeAnalyzer.SpectralFluxSamples[currentPoint], _midRangeObj);
+        _midRangeVisualizationBehaviour.SpawnMonster(_midRangeAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Sphere");
+
         _highRangeVisualizationBehaviour.VisualizePoint(_highRangeAnalyzer.SpectralFluxSamples[currentPoint], _highRangeObj);
+
+
     }
 
     IEnumerator WaitTest()

@@ -11,6 +11,11 @@ public class StringAudioVisualizer : IAudioVisualizationBehaviour
 
     public void VisualizePoint(SpectralFluxInfo point, GameObject target)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(target.ToString() + " - " + point.ToString());
+    }
+
+    public void SpawnMonster(SpectralFluxInfo point, ObjectPooler objectPooler, string tag)
+    {
+        Debug.Log(tag + " - " + point.ToString());
     }
 }
