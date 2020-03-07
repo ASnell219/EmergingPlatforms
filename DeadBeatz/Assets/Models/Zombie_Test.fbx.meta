@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8b8adb641dcb90747864e204d81c79c8
+guid: 1672085f3f7df0e45857f86f3cdff420
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -22,7 +22,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 0
+    importConstraints: 1
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -80,7 +80,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.099999994
+    globalScale: 10
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
