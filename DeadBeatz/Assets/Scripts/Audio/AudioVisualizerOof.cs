@@ -8,7 +8,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(AudioSource))]
-public class AudioVisualizer : MonoBehaviour
+public class AudioVisualizerOof : MonoBehaviour
 {
     private AudioProcessor _audioProcessor;
 
@@ -41,19 +41,19 @@ public class AudioVisualizer : MonoBehaviour
         // Bass
         _audioProcessor.ProcessClip(
             _audioSource.clip,
-            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 60, 250),
+            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 2000, 2499),
             analyzer => { _bassAnalyzer = analyzer; });
 
         // Midrange
         _audioProcessor.ProcessClip(
             _audioSource.clip,
-            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 2000, 4000),
+            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 2500, 4000),
             analyzer => { _midRangeAnalyzer = analyzer; });
 
         // High
         _audioProcessor.ProcessClip(
             _audioSource.clip,
-            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 7000, 7100),
+            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 4000, 20000),
             analyzer => { _highRangeAnalyzer = analyzer; });
     }
 
