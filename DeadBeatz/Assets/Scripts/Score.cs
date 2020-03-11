@@ -2,32 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI score = null;
-    [SerializeField] TextMeshProUGUI status = null;
-    [SerializeField] GameObject image = null;
+    [SerializeField] Image image = null;
 
-    [SerializeField] GameObject perfect = null;
+    [SerializeField] Sprite perfect = null;
+    [SerializeField] Sprite great = null;
+    [SerializeField] Sprite good = null;
+    [SerializeField] Sprite ok = null;
+    [SerializeField] Sprite miss = null;
+
     int scoreCount = 00000;
     int currentCount = 0;
     int perfectCount = 0;
     string tapStatus;
+
     void Start()
     {
-        //image
+        
     }
 
     void Update()
     {
-        //Uncomment this code to test the scoring
-        //if (Input.GetKeyDown(KeyCode.Q)) { tapStatus = "Perfect"; }
-        //if (Input.GetKeyDown(KeyCode.W)) { tapStatus = "Great"; }
-        //if (Input.GetKeyDown(KeyCode.E)) { tapStatus = "Good"; }
-        //if (Input.GetKeyDown(KeyCode.R)) { tapStatus = "OK"; }
-        //if (Input.GetKeyDown(KeyCode.T)) { tapStatus = "Miss"; }
-
         if (perfectCount >= 30) { currentCount = currentCount * 3; }
         else if (perfectCount >= 15) { currentCount = currentCount * 2; }
 
@@ -36,26 +35,26 @@ public class Score : MonoBehaviour
             case "Perfect":
                 scoreCount += 200;
                 perfectCount++;
-                status.text = "PERFECT!";
+                image.sprite = perfect;
                 break;
             case "Great":
                 scoreCount += 100;
                 perfectCount = 0;
-                status.text = "Great!";
+                image.sprite = great;
                 break;
             case "Good":
                 scoreCount += 50;
                 perfectCount = 0;
-                status.text = "Good";
+                image.sprite = good;
                 break;
             case "OK":
                 scoreCount += 25;
                 perfectCount = 0;
-                status.text = "Ok";
+                image.sprite = ok;
                 break;
             case "Miss":
                 perfectCount = 0;
-                status.text = "Miss!";
+                image.sprite = miss;
                 break;
         }
 
