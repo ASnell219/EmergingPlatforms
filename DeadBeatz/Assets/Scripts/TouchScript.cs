@@ -4,19 +4,33 @@ using UnityEngine;
 
 public class TouchScript : MonoBehaviour
 {
+    public List<GameObject> cubes = new List<GameObject>();
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(cubes.Count > 0)
         {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 50))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.tag == "Cube")
+                var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 50))
                 {
-                    Debug.Log("Cube");
+                    if (hit.collider.tag == "Cube")
+                    {
+                        Debug.Log("Cube");
+
+                        CollisionTest ct = cubes[0].GetComponentInChildren<CollisionTest>();
+                        Debug.Log(ct.state.ToString());
+                        testclick();
+                    }
                 }
             }
         }
+    }
+
+    public void testclick()
+    {
+
     }
 }

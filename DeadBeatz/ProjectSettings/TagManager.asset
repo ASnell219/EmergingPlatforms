@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Cube
   - Monster
+  - Ok
+  - Good
+  - Perfect
+  - Miss
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,6 @@ public class TestMovement : MonoBehaviour
 {
     void Update()
     {
-        this.transform.Translate(0, 0, -.1f);
+        this.transform.Translate(0, 0, -.05f);
     }
 }
