@@ -243,7 +243,19 @@ MonoBehaviour:
   - tag: Ghoost
     prefab: {fileID: 7950999267987361243, guid: 852752981af9d9d489a235280d5f4551,
       type: 3}
-    size: 100
+    size: 50
+  - tag: Zombie2
+    prefab: {fileID: 7081857311829499274, guid: 7446018486e6e2a43b99e417b84fcd94,
+      type: 3}
+    size: 50
+  - tag: Skeleton2
+    prefab: {fileID: 4335769956773471490, guid: 1a6f50b47799e7f4da3a5c951fd791ae,
+      type: 3}
+    size: 50
+  - tag: Ghoost2
+    prefab: {fileID: 7950999267987361243, guid: 852752981af9d9d489a235280d5f4551,
+      type: 3}
+    size: 50
 --- !u!4 &302699100
 Transform:
   m_ObjectHideFlags: 0

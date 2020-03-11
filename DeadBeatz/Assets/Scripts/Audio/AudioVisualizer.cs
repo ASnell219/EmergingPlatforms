@@ -18,15 +18,18 @@ public class AudioVisualizer : MonoBehaviour
     private bool _playClip;
 
     private readonly IAudioVisualizationBehaviour _bassVisualizationBehaviour = new PeakAudioVisualizerBehaviour();
+    private readonly IAudioVisualizationBehaviour _bassVisualizationBehaviour2 = new PeakAudioVisualizerBehaviour();
 
     private readonly IAudioVisualizationBehaviour _midRangeVisualizationBehaviour = new PeakAudioVisualizerBehaviour();
+    private readonly IAudioVisualizationBehaviour _midRangeVisualizationBehaviour2 = new PeakAudioVisualizerBehaviour();
 
     private readonly IAudioVisualizationBehaviour _highRangeVisualizationBehaviour = new PeakAudioVisualizerBehaviour();
+    private readonly IAudioVisualizationBehaviour _highRangeVisualizationBehaviour2 = new PeakAudioVisualizerBehaviour();
 
     [SerializeField]
     private GameObject _bassObj, _midRangeObj, _highRangeObj;
 
-    private SpectralFluxAnalyzer _bassAnalyzer, _midRangeAnalyzer, _highRangeAnalyzer;
+    private SpectralFluxAnalyzer _bassAnalyzer, _midRangeAnalyzer, _highRangeAnalyzer, _bassAnalyzer2, _midRangeAnalyzer2, _highRangeAnalyzer2;
 
     ObjectPooler objectPooler;
     // Use this for initialization
@@ -41,20 +44,32 @@ public class AudioVisualizer : MonoBehaviour
         // Bass
         _audioProcessor.ProcessClip(
             _audioSource.clip,
-            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 60, 250),
+            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 60, 200),
             analyzer => { _bassAnalyzer = analyzer; });
+        _audioProcessor.ProcessClip(
+            _audioSource.clip,
+            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 201, 400),
+            analyzer => { _bassAnalyzer2 = analyzer; });
 
         // Midrange
         _audioProcessor.ProcessClip(
             _audioSource.clip,
-            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 2000, 4000),
+            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 1000, 2000),
             analyzer => { _midRangeAnalyzer = analyzer; });
+        _audioProcessor.ProcessClip(
+            _audioSource.clip,
+            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 3000, 4000),
+            analyzer => { _midRangeAnalyzer2 = analyzer; });
 
         // High
         _audioProcessor.ProcessClip(
             _audioSource.clip,
-            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 7000, 7100),
+            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 6000, 7000),
             analyzer => { _highRangeAnalyzer = analyzer; });
+        _audioProcessor.ProcessClip(
+            _audioSource.clip,
+            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 7000, 8000),
+            analyzer => { _highRangeAnalyzer2 = analyzer; });
     }
 
     // Update is called once per frame
@@ -80,6 +95,15 @@ public class AudioVisualizer : MonoBehaviour
 
         _highRangeVisualizationBehaviour.VisualizePoint(_highRangeAnalyzer.SpectralFluxSamples[currentPoint], _highRangeObj);
         _highRangeVisualizationBehaviour.SpawnMonster(_highRangeAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Ghoost");
+
+        _bassVisualizationBehaviour2.VisualizePoint(_bassAnalyzer2.SpectralFluxSamples[currentPoint], _bassObj);
+        _bassVisualizationBehaviour2.SpawnMonster(_bassAnalyzer2.SpectralFluxSamples[currentPoint], objectPooler, "Zombie2");
+
+        _midRangeVisualizationBehaviour2.VisualizePoint(_midRangeAnalyzer2.SpectralFluxSamples[currentPoint], _midRangeObj);
+        _midRangeVisualizationBehaviour2.SpawnMonster(_midRangeAnalyzer2.SpectralFluxSamples[currentPoint], objectPooler, "Skeleton2");
+
+        _highRangeVisualizationBehaviour2.VisualizePoint(_highRangeAnalyzer2.SpectralFluxSamples[currentPoint], _highRangeObj);
+        _highRangeVisualizationBehaviour2.SpawnMonster(_highRangeAnalyzer2.SpectralFluxSamples[currentPoint], objectPooler, "Ghoost2");
 
     }
 
