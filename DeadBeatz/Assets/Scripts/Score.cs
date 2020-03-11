@@ -7,13 +7,16 @@ public class Score : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI score = null;
     [SerializeField] TextMeshProUGUI status = null;
+    [SerializeField] GameObject image = null;
+
+    [SerializeField] GameObject perfect = null;
     int scoreCount = 00000;
     int currentCount = 0;
     int perfectCount = 0;
     string tapStatus;
     void Start()
     {
-        
+        //image
     }
 
     void Update()
