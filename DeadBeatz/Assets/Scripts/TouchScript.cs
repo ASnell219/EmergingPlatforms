@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TouchScript : MonoBehaviour
 {
-    public List<GameObject> cubes = new List<GameObject>();
+    public ListManager lm;
 
     void Update()
     {
-        if(cubes.Count > 0)
+        if(lm.gameObjects.Count > 0)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -18,25 +18,16 @@ public class TouchScript : MonoBehaviour
                 {
                     if (hit.collider.tag == "Cube")
                     {
-                        Debug.Log("Cube");
-
-                        CollisionTest ct = cubes[0].GetComponentInChildren<CollisionTest>();
-                        Debug.Log(ct.state.ToString());
+                        MonsterObject mo = lm.gameObjects[0].GetComponentInChildren<MonsterObject>();
+                        Debug.Log(mo.currentState);
                         //call score on object
 
-                        GameObject go = cubes[0];
-                        cubes.Remove(cubes[0]);
-                        Destroy(go);
-
-                        testclick();
+                        GameObject go = lm.gameObjects[0];
+                        lm.gameObjects.Remove(lm.gameObjects[0]);
+                        go.SetActive(false);
                     }
                 }
             }
         }
-    }
-
-    public void testclick()
-    {
-
     }
 }
