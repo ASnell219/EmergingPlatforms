@@ -13,9 +13,6 @@ TagManager:
   - Zombie
   - Skeleton
   - Ghoost
-  - CubeLeft
-  - CubeMid
-  - CubeRight
   layers:
   - Default
   - TransparentFX

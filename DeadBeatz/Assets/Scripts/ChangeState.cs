@@ -13,7 +13,7 @@ public class ChangeState : MonoBehaviour
         {
             if (state.Equals("Miss"))
             {
-                lm.RemoveFromList(other.gameObject);
+                lm.gameObjects.Remove(other.gameObject);
                 other.gameObject.SetActive(false);
             }
             else
