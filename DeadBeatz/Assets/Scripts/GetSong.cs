@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class GetSong : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public AudioSource music = null;
+    public AudioClip[] songss;
     void Start()
     {
-        Debug.Log(PlayerPrefs.GetString("Song"));
-    }
+        string songName = PlayerPrefs.GetString("Song");
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        switch (songName)
+        {
+            case "Mystic Force":
+                music.clip = songss[1];
+                break;
+            case "Myst on the Moor":
+                music.clip = songss[2];
+                break;
+            case "Sandstorm":
+                music.clip = songss[0];
+                break;
+        }
     }
 }
