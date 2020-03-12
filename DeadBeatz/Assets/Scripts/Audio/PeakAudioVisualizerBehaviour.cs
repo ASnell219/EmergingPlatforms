@@ -31,12 +31,12 @@ public class PeakAudioVisualizerBehaviour : IAudioVisualizationBehaviour
         if (point.IsPeak && count > 10)
         {
             Vector3 position = new Vector3(0, 0, 0);
-            if (tag == "Zombie") position = new Vector3(-10, 0, 0);
+            if (tag == "Zombie") position = new Vector3(0, 0, 20);
             else if (tag == "Skeleton") position = new Vector3(-5, 0, 0);
             else if (tag == "Ghoost") position = new Vector3(0, 0, 0);
-            else if (tag == "Zombie2") position = new Vector3(5, 0, 0);
-            else if (tag == "Skeleton2") position = new Vector3(10, 0, 0);
-            else if (tag == "Ghoost2") position = new Vector3(15, 0, 0);
+            //else if (tag == "Zombie2") position = new Vector3(5, 0, 0);
+            //else if (tag == "Skeleton2") position = new Vector3(10, 0, 0);
+            //else if (tag == "Ghoost2") position = new Vector3(15, 0, 0);
 
             objectPooler.SpawnFromPool(tag, position, Quaternion.identity);
             count = 0;

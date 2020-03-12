@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class AddObject : MonoBehaviour
 {
-    public TouchScript ts;
+    public ListManager lm;
+
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Cube" || other.tag == "Zombie" || other.tag == "Skeleton" || other.tag == "Ghoost")
+        if(other.tag == "Monster")
         {
-            ts.cubes.Add(other.gameObject);
+            lm.gameObjects.Add(other.gameObject);
         }
     }
 }
