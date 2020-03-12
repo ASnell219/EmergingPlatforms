@@ -54,7 +54,7 @@ public class AudioVisualizer : MonoBehaviour
         // Midrange
         _audioProcessor.ProcessClip(
             _audioSource.clip,
-            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 1000, 2000),
+            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 2000, 4000),
             analyzer => { _midRangeAnalyzer = analyzer; });
         //_audioProcessor.ProcessClip(
         //    _audioSource.clip,
@@ -64,7 +64,7 @@ public class AudioVisualizer : MonoBehaviour
         // High
         _audioProcessor.ProcessClip(
             _audioSource.clip,
-            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 6000, 7000),
+            new SpectralFluxAnalyzer(1024, _audioSource.clip.frequency, 6000, 10000),
             analyzer => { _highRangeAnalyzer = analyzer; });
         //_audioProcessor.ProcessClip(
         //    _audioSource.clip,
@@ -91,10 +91,10 @@ public class AudioVisualizer : MonoBehaviour
         _bassVisualizationBehaviour.SpawnMonster(_bassAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Zombie");
 
         //_midRangeVisualizationBehaviour.VisualizePoint(_midRangeAnalyzer.SpectralFluxSamples[currentPoint], _midRangeObj);
-        //_midRangeVisualizationBehaviour.SpawnMonster(_midRangeAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Skeleton");
+        _midRangeVisualizationBehaviour.SpawnMonster(_midRangeAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Skeleton");
 
         //_highRangeVisualizationBehaviour.VisualizePoint(_highRangeAnalyzer.SpectralFluxSamples[currentPoint], _highRangeObj);
-        //_highRangeVisualizationBehaviour.SpawnMonster(_highRangeAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Ghoost");
+        _highRangeVisualizationBehaviour.SpawnMonster(_highRangeAnalyzer.SpectralFluxSamples[currentPoint], objectPooler, "Ghoost");
 
         //_bassVisualizationBehaviour2.VisualizePoint(_bassAnalyzer2.SpectralFluxSamples[currentPoint], _bassObj);
         //_bassVisualizationBehaviour2.SpawnMonster(_bassAnalyzer2.SpectralFluxSamples[currentPoint], objectPooler, "Zombie2");
