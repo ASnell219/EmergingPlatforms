@@ -14,7 +14,6 @@ public class AudioVisualizer : MonoBehaviour
 
     private AudioSource _audioSource;
     public AudioSource _playedSource;
-    public int waitTime = 1;
 
     private bool _playClip;
 
@@ -114,7 +113,7 @@ public class AudioVisualizer : MonoBehaviour
         {
             if (!_playedSource.isPlaying)
             {
-                yield return new WaitForSeconds(waitTime); //time a note takes to reach the player
+                yield return new WaitForSeconds(5); //time a note takes to reach the player
                 _playedSource.Play();
             }
         }
