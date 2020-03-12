@@ -10,6 +10,9 @@ TagManager:
   - Good
   - Perfect
   - Miss
+  - Zombie
+  - Skeleton
+  - Ghoost
   layers:
   - Default
   - TransparentFX
