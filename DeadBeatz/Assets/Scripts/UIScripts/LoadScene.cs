@@ -13,6 +13,6 @@ public class LoadScene : MonoBehaviour
     public void GetSong(string name)
     {
         PlayerPrefs.SetString("Song", name);
-        Load("Scene_Joel");
+        Load("Scene_Ash");
     }
 }
