@@ -16,16 +16,26 @@ public class TouchScript : MonoBehaviour
             {
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 50, layermask))
+                if (Physics.Raycast(ray, out hit, 20, layermask) && hit.collider.gameObject == this.gameObject)
                 {
-                    if (hit.collider.tag == "Cube")
+                    if(hit.collider.tag == "CubeLeft")
                     {
-                        MonsterObject mo = lm.gameObjects[0].GetComponentInChildren<MonsterObject>();
+                        GameObject go = lm.GetFirstIndex();
+                        MonsterObject mo = go.GetComponentInChildren<MonsterObject>();
                         Debug.Log(mo.currentState);
                         //call score on object
 
-                        GameObject go = lm.gameObjects[0];
-                        lm.gameObjects.Remove(go);
+                        lm.RemoveFromList(go);
+                        go.SetActive(false);
+                    }
+                    else if(hit.collider.tag == "CubeMid")
+                    {
+                        GameObject go = lm.GetFirstIndex();
+                        MonsterObject mo = go.GetComponentInChildren<MonsterObject>();
+                        Debug.Log(mo.currentState);
+                        //call score on object
+
+                        lm.RemoveFromList(go);
                         go.SetActive(false);
                     }
                 }

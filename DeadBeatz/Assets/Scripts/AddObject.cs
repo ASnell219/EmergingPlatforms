@@ -10,8 +10,7 @@ public class AddObject : MonoBehaviour
     {
         if(other.tag == "Monster")
         {
-            Debug.Log(other.gameObject);
-            lm.gameObjects.Add(other.gameObject);
+            lm.AddToList(other.gameObject);
         }
     }
 }
