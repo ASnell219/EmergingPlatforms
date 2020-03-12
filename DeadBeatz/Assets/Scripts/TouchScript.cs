@@ -22,6 +22,12 @@ public class TouchScript : MonoBehaviour
 
                         CollisionTest ct = cubes[0].GetComponentInChildren<CollisionTest>();
                         Debug.Log(ct.state.ToString());
+                        //call score on object
+
+                        GameObject go = cubes[0];
+                        cubes.Remove(cubes[0]);
+                        Destroy(go);
+
                         testclick();
                     }
                 }
