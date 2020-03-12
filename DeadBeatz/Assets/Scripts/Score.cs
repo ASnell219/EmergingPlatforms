@@ -7,56 +7,71 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI score = null;
-    [SerializeField] Image image = null;
+    [SerializeField] Image Status = null;
+    [SerializeField] Image Combo = null;
 
     [SerializeField] Sprite perfect = null;
     [SerializeField] Sprite great = null;
     [SerializeField] Sprite good = null;
     [SerializeField] Sprite ok = null;
     [SerializeField] Sprite miss = null;
+    [SerializeField] Sprite two = null;
+    [SerializeField] Sprite three = null;
+    [SerializeField] Sprite blank = null;
 
     int scoreCount = 00000;
     int currentCount = 0;
     int perfectCount = 0;
     string tapStatus;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
-        if (perfectCount >= 30) { currentCount = currentCount * 3; }
-        else if (perfectCount >= 15) { currentCount = currentCount * 2; }
-
+        //if(Input.GetKeyDown(KeyCode.Q)) { tapStatus = "Perfect"; }
+        //if(Input.GetKeyDown(KeyCode.W)) { tapStatus = "Great"; }
+        //if(Input.GetKeyDown(KeyCode.E)) { tapStatus = "Good"; }
+        //if(Input.GetKeyDown(KeyCode.R)) { tapStatus = "OK"; }
+        //if(Input.GetKeyDown(KeyCode.T)) { tapStatus = "Miss"; }
+ 
         switch(tapStatus)
         {
             case "Perfect":
-                scoreCount += 200;
+                currentCount = 200;
                 perfectCount++;
-                image.sprite = perfect;
+                Status.sprite = perfect;
                 break;
             case "Great":
-                scoreCount += 100;
+                currentCount = 100;
                 perfectCount = 0;
-                image.sprite = great;
+                Status.sprite = great;
                 break;
             case "Good":
-                scoreCount += 50;
+                currentCount = 50;
                 perfectCount = 0;
-                image.sprite = good;
+                Status.sprite = good;
                 break;
             case "OK":
-                scoreCount += 25;
+                currentCount = 25;
                 perfectCount = 0;
-                image.sprite = ok;
+                Status.sprite = ok;
                 break;
             case "Miss":
+                currentCount = 0;
                 perfectCount = 0;
-                image.sprite = miss;
+                Status.sprite = miss;
                 break;
         }
+
+        if (perfectCount >= 30)
+        {
+            currentCount = currentCount * 3;
+            Combo.sprite = three;
+        }
+        else if (perfectCount >= 15)
+        {
+            currentCount = currentCount * 2;
+            Combo.sprite = two;
+        }
+        if (perfectCount == 0) { Combo.sprite = blank; }
 
         scoreCount += currentCount;
         score.text = scoreCount.ToString("D5");
