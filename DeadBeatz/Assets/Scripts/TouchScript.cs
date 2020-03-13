@@ -5,7 +5,7 @@ using UnityEngine;
 public class TouchScript : MonoBehaviour
 {
     public ListManager lm;
-    Score sc;
+    //public Score sc;
     int layermask = 1 << 8;
 
     void Update()
@@ -13,7 +13,7 @@ public class TouchScript : MonoBehaviour
 
         if(lm.gameObjects.Count > 0)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
             {
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
@@ -22,7 +22,7 @@ public class TouchScript : MonoBehaviour
                     GameObject go = lm.GetFirstIndex();
                     MonsterObject mo = go.GetComponentInChildren<MonsterObject>();
                     Debug.Log(mo.currentState);
-                    sc.changeScore(mo.currentState.ToString());
+                    //sc.changeScore(mo.currentState.ToString());
                     //call score on object
 
                     lm.RemoveFromList(go);
