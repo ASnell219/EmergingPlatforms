@@ -24,6 +24,11 @@ public class Score : MonoBehaviour
     int perfectCount = 0;
     string tapStatus;
 
+    public void changeScore(string stat)
+    {
+        tapStatus = stat;
+    }
+
     void Update()
     {
         //if(Input.GetKeyDown(KeyCode.Q)) { tapStatus = "Perfect"; }

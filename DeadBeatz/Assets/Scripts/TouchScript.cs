@@ -5,6 +5,7 @@ using UnityEngine;
 public class TouchScript : MonoBehaviour
 {
     public ListManager lm;
+    Score sc;
     int layermask = 1 << 8;
 
     void Update()
@@ -21,6 +22,7 @@ public class TouchScript : MonoBehaviour
                     GameObject go = lm.GetFirstIndex();
                     MonsterObject mo = go.GetComponentInChildren<MonsterObject>();
                     Debug.Log(mo.currentState);
+                    sc.changeScore(mo.currentState.ToString());
                     //call score on object
 
                     lm.RemoveFromList(go);

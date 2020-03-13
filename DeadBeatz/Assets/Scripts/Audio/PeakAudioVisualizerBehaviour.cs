@@ -28,10 +28,10 @@ public class PeakAudioVisualizerBehaviour : IAudioVisualizationBehaviour
 
     public void SpawnMonster([NotNull] SpectralFluxInfo point, ObjectPooler objectPooler, string tag)
     {
-        if (point.IsPeak && count > 50)
+        if (point.IsPeak && point.PrunedSpectralFlux > .2f)
         {
             Vector3 position = new Vector3(0, 0, 0);
-            if (tag == "Zombie") position = new Vector3(0, 0.5f, 20);
+            if (tag == "Zombie") position = new Vector3(0, 0.5f, 20); //-2 0 3
             else if (tag == "Skeleton") position = new Vector3(-3, 0.5f, 20);
             else if (tag == "Ghoost") position = new Vector3(3, 1, 20);
             //else if (tag == "Zombie2") position = new Vector3(5, 0, 0);
