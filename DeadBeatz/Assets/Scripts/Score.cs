@@ -24,20 +24,20 @@ public class Score : MonoBehaviour
     int perfectCount = 0;
     string tapStatus;
 
-    public void changeScore(string stat)
-    {
-        tapStatus = stat;
-    }
+    //public void changeScore(string stat)
+    //{
+    //    tapStatus = stat;
+    //}
 
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Q)) { tapStatus = "Perfect"; }
-        //if(Input.GetKeyDown(KeyCode.W)) { tapStatus = "Great"; }
-        //if(Input.GetKeyDown(KeyCode.E)) { tapStatus = "Good"; }
-        //if(Input.GetKeyDown(KeyCode.R)) { tapStatus = "OK"; }
-        //if(Input.GetKeyDown(KeyCode.T)) { tapStatus = "Miss"; }
- 
-        switch(tapStatus)
+        if (Input.GetKeyDown(KeyCode.Q)) { tapStatus = "Perfect"; }
+        if (Input.GetKeyDown(KeyCode.W)) { tapStatus = "Great"; }
+        if (Input.GetKeyDown(KeyCode.E)) { tapStatus = "Good"; }
+        if (Input.GetKeyDown(KeyCode.R)) { tapStatus = "OK"; }
+        if (Input.GetKeyDown(KeyCode.T)) { tapStatus = "Miss"; }
+
+        switch (tapStatus)
         {
             case "Perfect":
                 currentCount = 200;
